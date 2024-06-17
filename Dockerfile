@@ -1,10 +1,10 @@
 FROM ubuntu:latest
-LABEL authors="Anthony Ortega"
+LABEL authors="antho"
 
 ENTRYPOINT ["top", "-b"]
 
 # Utiliza una imagen base con OpenJDK 17 y Gradle 7.4.0
-FROM maven AS build
+FROM maven:7.4.0-jdk17 AS build
 
 # Establece el directorio de trabajo
 WORKDIR /app
@@ -13,7 +13,7 @@ WORKDIR /app
 COPY . .
 
 # Construye tu aplicación con Gradle
-RUN mvn build --no-daemon
+RUN maven build --no-daemon
 
 # Cambia a una imagen más ligera de OpenJDK 17 para la ejecución
 FROM openjdk:17-jdk-slim
