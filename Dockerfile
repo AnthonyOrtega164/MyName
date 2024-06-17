@@ -29,4 +29,4 @@ COPY --from=build /app/src/main/resources/application.properties .
 EXPOSE 8080
 
 # Define el comando de inicio de la aplicación
-CMD ["java", "-jar", "<nombre_jar_generado>.jar"]
+CMD ["java", "-jar", "myName.jar"]
